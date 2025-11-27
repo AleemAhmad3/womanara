@@ -2,7 +2,7 @@ import { invokeApi } from "../utils/invokeApi.js";
 
 export const createLead = async (data) => {
   const reqObj = {
-    path: "/CreateLeads",
+    path: "/api/CreateLeads",
     method: "POST",
     headers: {
   

@@ -3,13 +3,16 @@
 import React, { useState } from "react";
 import "./ContactForm.css";
 
-// React Icons
-import { AiOutlineMail, AiOutlinePhone, AiOutlineInstagram, AiOutlineFacebook, AiFillLinkedin } from "react-icons/ai";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 import { GoLocation } from "react-icons/go";
 import { createLead } from "../DAL/create";
 import { FaFacebookF, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { AiOutlineMail, AiOutlinePhone } from "react-icons/ai";
 
 export default function ContactForm() {
+    const [errors, setErrors] = useState({});
     const [formData, setFormData] = useState({
         name: "",
         phone: "",
@@ -23,40 +26,52 @@ export default function ContactForm() {
         setFormData((prev) => ({ ...prev, [name]: value }));
     };
 
+
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            const response = await createLead(formData);
-            console.log("Lead created successfully:", response);
-            alert("Message sent successfully 👌");
+            const res = await createLead(formData);
+            if (res.status === 201) {
+                toast.success(res?.message || "Message sent successfully");
+                setErrors({});
 
-            // Reset form
-            setFormData({
-                name: "",
-                phone: "",
-                email: "",
-                subject: "",
-                message: "",
-            });
-
-        } catch (error) {
-            console.error("Error sending lead:", error);
-            alert("Something went wrong ❌");
+                setFormData({
+                    name: "",
+                    phone: "",
+                    email: "",
+                    subject: "",
+                    message: "",
+                });
+            }
+            if (res?.status == 400) {
+                const fieldErrors = {};
+                res.missingFields.forEach((field) => {
+                    fieldErrors[field.name] = field.message;
+                });
+                setErrors(fieldErrors);
+            }
+        } catch (err) {
+            if (err?.status == 400) {
+                const fieldErrors = {};
+                err.missingFields.forEach((field) => {
+                    fieldErrors[field.name] = field.message;
+                });
+                setErrors(fieldErrors);
+                toast.error();
+            }
         }
     };
 
     return (
         <div className="contact-container">
             <div className="contact-wrapper">
-
-                {/* Left Info Section */}
+                {/* Left Section */}
                 <div className="contact-left">
                     <h1 className="contact-title">
-                        Let's talk on
-                        <br />
-                        <span className="contact-highlight">something great</span>
-                        <br />
+                        Let's talk on <br />
+                        <span className="contact-highlight">something great</span> <br />
                         together
                     </h1>
 
@@ -75,26 +90,21 @@ export default function ContactForm() {
                         </div>
                     </div>
 
-                    <div className="social-links">
-                        <a href="https://www.linkedin.com/company/womanara/" className="social-icon" aria-label="LinkedIn">
-                            <FaLinkedinIn size={24} />
-                        </a>
-                        <a href="https://www.facebook.com/Womanara-Foundation-114142357015520/" className="social-icon" aria-label="Facebook">
-                            <FaFacebookF size={24} />
-                        </a>
-                        <a href="https://www.instagram.com/womanarafoundation/" className="social-icon" aria-label="Instagram">
-                            <FaInstagram size={24} />
-                        </a>
+                    <div className="social-links"> <a href="https://www.linkedin.com/company/womanara/" className="social-icon"> <FaLinkedinIn size={24} />
+                    </a> <a href="https://www.facebook.com/Womanara-Foundation-114142357015520/" className="social-icon"> <FaFacebookF size={24} /> </a>
+                        <a href="https://www.instagram.com/womanarafoundation/" className="social-icon"> <FaInstagram size={24} /> </a>
                     </div>
+
                 </div>
 
-                {/* Right Form Section */}
+                {/* Right Form */}
                 <div className="contact-right">
                     <div className="form-card">
                         <form onSubmit={handleSubmit} className="form-content">
 
                             <div className="form-group">
-                                <label htmlFor="name">Your name</label>
+                                <label>Your name</label>
+                                {errors.name && <p className="error-msg">{errors.name}</p>}
                                 <input
                                     type="text"
                                     name="name"
@@ -105,7 +115,8 @@ export default function ContactForm() {
                             </div>
 
                             <div className="form-group">
-                                <label htmlFor="phone">Your phone</label>
+                                <label>Your phone</label>
+                                {errors.phone && <p className="error-msg">{errors.phone}</p>}
                                 <input
                                     type="tel"
                                     name="phone"
@@ -117,10 +128,11 @@ export default function ContactForm() {
 
                             <div className="form-group">
                                 <label>Your email</label>
+                                {errors.email && <p className="error-msg">{errors.email}</p>}
                                 <input
                                     type="email"
                                     name="email"
-                                    placeholder="email@gmail.com"
+                                    placeholder="example@gmail.com"
                                     value={formData.email}
                                     onChange={handleInputChange}
                                 />
@@ -128,6 +140,7 @@ export default function ContactForm() {
 
                             <div className="form-group">
                                 <label>Subject</label>
+                                {errors.subject && <p className="error-msg">{errors.subject}</p>}
                                 <input
                                     type="text"
                                     name="subject"
@@ -139,24 +152,21 @@ export default function ContactForm() {
 
                             <div className="form-group">
                                 <label>Your message</label>
+                                {errors.message && <p className="error-msg">{errors.message}</p>}
                                 <textarea
                                     name="message"
                                     placeholder="Leave a message"
-                                    rows="5"
+                                    rows="4"
                                     value={formData.message}
                                     onChange={handleInputChange}
                                 />
                             </div>
 
-                            <button type="submit" className="submit-btn">
-                                Send message
-                            </button>
-
+                            <button type="submit" className="submit-btn">Send message</button>
                         </form>
                     </div>
                 </div>
-
             </div>
-        </div>
+        </div >
     );
 }
