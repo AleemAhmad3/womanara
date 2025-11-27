@@ -79,16 +79,20 @@ export default function ContactForm() {
                     <div className="contact-info">
                         <div className="contact-info-item">
                             <AiOutlineMail className="contact-icon" />
-                            <a href="mailto:info@womanarafoundation.org">info@womanarafoundation.org</a>
+                            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@womanarafoundation.org">info@womanarafoundation.org</a>
                         </div>
-                        <div className="contact-info-item">
-                            <AiOutlinePhone className="contact-icon" />
-                            <a href="tel:+34123456789">+34 123 456 789</a>
-                        </div>
+
                         <div className="contact-info-item">
                             <GoLocation className="contact-icon" />
-                            <span>Lorem ipsum dolor sit amet consectetur adipisicing elit.</span>
+                            <a
+                                href="https://www.google.com/maps/search/?api=1&query=2245+Texas+Drive,+Suite+300,+Sugar+Land,+Texas+77479"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                2245 Texas Drive, Suite 300, Sugar Land, Texas 77479
+                            </a>
                         </div>
+
                     </div>
 
                     <div className="social-links"> <a href="https://www.linkedin.com/company/womanara/" className="social-icon"> <FaLinkedinIn size={24} />

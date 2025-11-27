@@ -3,17 +3,22 @@ import "./Collaborators.css"
 
 const images = [
   "/radiation.jpeg",
-  "hi.jpeg",
-  "united.jpeg",
-  "circle.jpeg",
-  "varian.jpeg",
-  "elekta.jpeg",
-  "hologic.jpeg",
-  "siemens.jpeg",
-  "sit.jpeg",
-  "sysmex.jpeg",
-  "xoft.jpeg",
-  "murrieta.jpeg",
+  "/hi.jpeg",
+  "/united.jpeg",
+  "/circle.jpeg",
+  "/varian.jpeg",
+  "/elekta.jpeg",
+  "/hologic.jpeg",
+  "/siemens.jpeg",
+  "/sit.jpeg",
+  "/sysmex.jpeg",
+  "/xoft.jpeg",
+  "/murrieta.jpeg",
+  "/zemalt-logo.webp",
+  "/carteroil-nobg.png",
+  "/plutosec-nobg.png",
+  "/digitalaura-nobg.png",
+  "/moawin-nobg.png",
 ]
 
 const Collaborators = () => {

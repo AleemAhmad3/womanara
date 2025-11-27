@@ -45,7 +45,7 @@ const focusData = [
       <p>Each partner adds value through program growth, providing necessary support, and promoting widespread awareness.</p>
       <p>Organizations and donors help women get education, early checks, and treatment. Communities gain stronger health systems and useful local programs.</p>
       <p>Contributions add funds, tools, and support that improve access to care.</p>
-      <p>You take an active role in empowering women through education, safe care, and access to treatment options. Every act of support creates real change and helps reach more women in underserved areas.</p>
+     
     `,
         image: "/involvement.webp",
         reverse: false,
