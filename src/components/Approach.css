@@ -1,0 +1,48 @@
+.approach {
+  width: 100%;
+  padding: 40px 10%;
+  background-color: var(--primary-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.approach .left {
+  width: 50%;
+}
+.approach .left h2 {
+  font-size: var(--heading-two);
+  margin-bottom: 10px;
+}
+.approach .left p {
+  font-size: var(--default-p-size);
+  line-height: var(--p-line-height);
+  margin-bottom: 10px;
+}
+.approach .right {
+  width: 50%;
+}
+.approach .right img {
+  width: auto;
+  height: 700px;
+  display: flex;
+  justify-self: flex-end;
+}
+
+@media (max-width: 900px) {
+  .approach {
+    width: 100%;
+    padding: 20px 5%;
+    flex-direction: column;
+  }
+  .approach .left {
+    width: 100%;
+  }
+  .approach .right {
+    width: 100%;
+  }
+  .approach .right img {
+    width: 80%;
+    height: auto;
+    justify-self: center;
+  }
+}

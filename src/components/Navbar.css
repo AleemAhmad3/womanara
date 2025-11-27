@@ -1,0 +1,136 @@
+.navbar {
+  background-color: var(--secondary-color);
+  padding: 1rem 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo Styling */
+.navbar-logo {
+  width: 150px;
+}
+
+.navbar-logo img {
+  width: 100%;
+  height: auto;
+}
+
+/* Hamburger Toggle */
+.navbar-toggle {
+  display: none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.navbar-toggle:hover {
+  color: var(--primary-color);
+}
+
+/* Navigation Menu */
+.navbar-menu {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  align-items: center;
+}
+
+.navbar-item {
+  position: relative;
+}
+
+.navbar-link {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  padding: 0.5rem 0;
+}
+
+.navbar-link:hover {
+  color: var(--primary-color);
+}
+
+.navbar-link::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: var(--primary-color);
+  transition: width 0.3s ease;
+}
+
+.navbar-link:hover::after {
+  width: 100%;
+}
+
+/* Mobile Responsive - Media Query at 900px */
+@media (max-width: 900px) {
+  .navbar-container {
+    padding: 0 1rem;
+  }
+  .navbar-logo {
+    width: 100px;
+  }
+
+  /* Show hamburger toggle */
+  .navbar-toggle {
+    display: flex;
+    align-items: center;
+  }
+
+  /* Hide menu by default, show when active */
+  .navbar-menu {
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    background-color: #1a1a1a;
+    flex-direction: column;
+    gap: 0;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+  }
+
+  .navbar-menu.active {
+    height: 100vh;
+    max-height: 100vh;
+    transition: max-height 0.3s ease-in;
+  }
+
+  .navbar-item {
+    width: 100%;
+    border-bottom: 1px solid #333;
+  }
+
+  .navbar-link {
+    display: block;
+    padding: 1.5rem 2rem;
+    color: #fff;
+  }
+
+  .navbar-link:hover {
+    background-color: #2a2a2a;
+    color: var(--primary-color);
+  }
+
+  .navbar-link::after {
+    display: none;
+  }
+}
