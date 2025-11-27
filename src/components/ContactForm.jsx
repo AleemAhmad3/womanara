@@ -70,9 +70,10 @@ export default function ContactForm() {
                 {/* Left Section */}
                 <div className="contact-left">
                     <h1 className="contact-title">
-                        Let's talk on <br />
-                        <span className="contact-highlight">something great</span> <br />
-                        together
+                        We’re Here to
+                        <br />
+                        <span className="contact-highlight">Help </span>
+                        You
                     </h1>
 
                     <div className="contact-info">

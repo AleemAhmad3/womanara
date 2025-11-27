@@ -5,6 +5,7 @@ import Approach from '../../components/Approach'
 import Focus from '../../components/Focus'
 import Collaborators from '../../components/Collaborators'
 import ContactForm from '../../components/ContactForm'
+import Subscribe from '../../components/Subscribe'
 
 const focusData = [
     {
@@ -72,6 +73,7 @@ const Home = () => {
                     />
                 </div>
             ))}
+            <Subscribe />
             <div id="collaborators">
                 <Collaborators />
             </div>
