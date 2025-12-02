@@ -6,6 +6,7 @@ import Focus from '../../components/Focus'
 import Collaborators from '../../components/Collaborators'
 import ContactForm from '../../components/ContactForm'
 import Subscribe from '../../components/Subscribe'
+import DonateNow from '../../components/DonateNow'
 
 const focusData = [
     {
@@ -57,6 +58,7 @@ const Home = () => {
     return (
         <div>
             <Hero />
+            <DonateNow/>
             <div id="about">
                 <About />
             </div>
