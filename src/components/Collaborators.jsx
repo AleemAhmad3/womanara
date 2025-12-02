@@ -16,8 +16,6 @@ const images = [
   "/murrieta.jpeg",
   "/zemalt-logo.webp",
   "/carteroil-nobg.png",
-  "/plutosec-nobg.png",
-  "/digitalaura-nobg.png",
   "/moawin-nobg.png",
 ]
 
